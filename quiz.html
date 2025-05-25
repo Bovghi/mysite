@@ -1,0 +1,147 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <title>Borghi.js</title>
+    <style>
+    .domande {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .opzioni {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .opzione {
+        background-color:#f0f0f0;
+        border:1px solid #ccc;
+        border-radius:5px;
+        padding: 10px 20px;
+        margin:5px;
+        cursor:pointer;
+    }
+    .opzione:hover {
+        background-color:#e0e0e0;
+    }
+    .opzione:active{
+        background-color:#4b3754;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Quizzone matto</h1>
+    </header>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="indovina.html">Indovina il numero</a>
+        <a href="scf.html">Morra cinese</a>
+        <a href="quiz.html">Quiz</a>
+    </nav>
+<div class="container">
+    <div class="domande" id="domande"></div>
+    <div class="opzioni" id="opzioni"></div>
+    <button class="opzione" onclick="prossima()">Successiva</button>
+</div>
+<div class="container">
+    <h1>Come è stato realizzato</h1>
+<ul>
+<h2>Definizione del Quiz:</h2>
+<p>Il quiz consiste in una serie di domande a risposta multipla.</p>
+<p>Ogni domanda ha una o più risposte corrette.</p>
+<h2>Progettazione dell'Interfaccia Utente:</h2>
+<p>Crea un'interfaccia utente che mostri una domanda alla volta e una serie di opzioni di risposta.</p>
+<p>Fornisci pulsanti o opzioni di selezione per permettere all'utente di scegliere la risposta desiderata.</p>
+<h2>Implementazione della Logica del Quiz:</h2>
+<p>Definisci un array contenente tutte le domande del quiz e le rispettive risposte corrette.</p>
+<p>Quando l'utente seleziona una risposta, verifica se è corretta confrontandola con le risposte corrette nell'array delle domande.</p>
+<h2>Fornire Feedback all'Utente:</h2>
+<p>Dopo che l'utente ha risposto a una domanda, fornisci un feedback che indichi se la risposta è corretta o sbagliata.</p>
+<h2>Gestire il Flusso del Quiz:</h2>
+<p>Passa alla domanda successiva dopo che l'utente ha risposto correttamente o dopo che è scaduto il tempo per rispondere.</p>
+<p>Termina il quiz dopo aver completato tutte le domande o dopo un numero predefinito di domande.</p>
+<h2>Testare e Ottimizzare:</h2>
+<p>Assicurati di testare il quiz per verificare che funzioni correttamente in diverse situazioni, come risposte corrette e errate.</p>
+<p>Ottimizza il codice per migliorare le prestazioni e risolvere eventuali bug.</p>
+</ul>
+</div>
+    <div class="container">
+        <div class="advertisement">
+            <h2>Pubblicità</h2>
+            <a href="https://www.lellikelly.it/en/"><img src="../img/pubbl2.png" alt="Pubblicità"></a>
+        </div>
+    </div>
+<script>
+    const domande = [
+        {
+            domanda: "Quanti sono gli abitanti del Myanmar?",
+            opzioni: ["53,8 m", "34,6 m", "24,2 m", "71,8 m"],
+            giusta: 0
+        },
+        {
+            domanda: "Qual è la massa del sole?",
+            opzioni: ["2", "5.97 x 10^24 kg", "1,99 x 10^30 kg", "6.67 x 10^-11 kg"],
+            giusta: 2 
+        },
+        {
+            domanda: "Il simbolo Au sulla tavola periodica indica:",
+            opzioni: ["Australia", "Oro", "Benzodiazepine", "Ampia Uganda"],
+            giusta: 1 
+        },
+        {
+            domanda: "Quanti giorni ci sono in una settimana?",
+            opzioni: ["1", "Ciao", "3.14156592", "7"],
+            giusta: 3 
+        },
+        {
+            domanda: "Qual è l'età di Mike Buongiorno",
+            opzioni: ["È ancora vivo?", "85", "Il suo ricordo è ancora vivo nel nostro cuore", "78"],
+            giusta: 2 
+        },
+        {
+            domanda: "Questo sito è la cosa migliore che ha visto oggi?",
+            opzioni: ["Mmh, forse no", "Si", "Non ricordo", "Acido desossiribonucleico"],
+            giusta: 1 
+        } 
+    ];
+
+    let ndom = 0;
+    const domand = document.getElementById("domande");
+    const opzion = document.getElementById("opzioni");
+
+    function mostradomanda() {
+        const domandaora = domande[ndom];
+        domand.textContent = domandaora.domanda;
+        opzion.innerHTML = "";
+        domandaora.opzioni.forEach((opzione, n) => {
+            const bottoner = document.createElement("button");
+            bottoner.textContent = `${n + 1}. ${opzione}`;
+            bottoner.classList.add("opzione");
+            bottoner.onclick = () => controlla(n);
+            opzion.appendChild(bottoner);
+        });
+    }
+
+    function controlla(n) {
+        const domandaora = domande[ndom];
+        if (n === domandaora.giusta) {
+            alert("Yeah🔥");
+        } else {
+            alert("Nooooo!");
+        }
+    }
+
+    function prossima() {
+        ndom++;
+        if (ndom < domande.length) {
+            mostradomanda();
+        } else {
+            alert("Quiz terminato");
+            
+        }
+    }
+    mostradomanda();
+</script>
+
+</body>
+</html>

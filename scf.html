@@ -1,0 +1,78 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../style.css">
+  <title>Borghi.js</title>
+  <style>
+    button{
+        padding:10px 20px;
+        font-size:18px;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <h1>Sassocartaforbiciato</h1>
+    </header>
+  <nav>
+        <a href="../index.html">Home</a>
+        <a href="indovina.html">Indovina il numero</a>
+        <a href="scf.html">Morra cinese</a>
+        <a href="quiz.html">Quiz</a>
+    </nav>
+<div class="container">
+  <button onclick="gioca('sasso')">Sasso</button>
+  <button onclick="gioca('carta')">Carta</button>
+  <button onclick="gioca('forbice')">Forbice</button>
+
+<div id="risultato"></div>
+
+</div>
+<div class="container">
+    <h1>Come è stato realizzato?</h1>
+    <ul>
+        <h2>Definizione delle Regole del Gioco:</h2>
+        <li>Il gioco "Sasso, Carta, Forbice" coinvolge due giocatori che fanno una scelta tra "Sasso", "Carta" o "Forbice". Le regole del gioco stabiliscono quale scelta vince in ogni situazione: il sasso batte la forbice, la carta batte il sasso e la forbice batte la carta.</li>
+        <h2>Progettazione dell'Interfaccia Utente:</h2>
+        <li>Crea un'interfaccia utente semplice che consenta ai giocatori di fare la loro scelta tra le opzioni disponibili. Potresti utilizzare pulsanti o menu a discesa per rappresentare le opzioni di gioco.</li>
+        <h2>Implementazione della Logica di Gioco:</h2>
+        <li>Nella logica di gioco, dovrai scrivere il codice che determina il vincitore di ogni turno in base alle scelte fatte dai giocatori. Ad esempio, se un giocatore sceglie "Sasso" e l'altro sceglie "Forbice", il giocatore che ha scelto "Sasso" vince il turno.</li>
+        <h2>Fornire Feedback all'Utente:</h2>
+        <li>Dopo ogni turno, fornisci un feedback all'utente che mostri il risultato del turno e chi è il vincitore. Puoi farlo mostrando un messaggio sull'interfaccia utente o aggiornando un elemento HTML specifico.</li>
+        <h2>Gestire il Flusso del Gioco:</h2>
+        <li>Decidi come gestire il flusso del gioco, ad esempio quanti turni giocare o se il gioco termina dopo un certo numero di vittorie da parte di uno dei giocatori.</li>
+        <h2>Testare e Ottimizzare:</h2>
+        <li>Assicurati di testare il gioco per verificare che funzioni correttamente in diverse situazioni. Potresti dover ottimizzare il codice per migliorare le prestazioni o risolvere eventuali bug.</li>
+    </ul>
+
+</div>
+    <div class="container">
+        <div class="advertisement">
+            <h2>Pubblicità</h2>
+            <a href="https://it.wikipedia.org/wiki/Mr._Bean"><img src="../img/pubbl3.png" alt="Pubblicità"></a>
+        </div>
+    </div>
+
+<script>
+  function gioca(sceltaUtente) {
+    const sceltePossibili = ['sasso', 'carta', 'forbice'];
+    const sceltaComputer = sceltePossibili[Math.floor(Math.random() * sceltePossibili.length)];
+
+    let risultato = '';
+
+    if (sceltaUtente === sceltaComputer) {
+      risultato = 'Pareggio!';
+    } else if (
+      (sceltaUtente === 'sasso' && sceltaComputer === 'forbice') ||
+      (sceltaUtente === 'carta' && sceltaComputer === 'sasso') ||
+      (sceltaUtente === 'forbice' && sceltaComputer === 'carta')
+    ) {
+      risultato = 'V come vittoria';
+    } else {
+      risultato = 'Perdita';
+    }
+
+    document.getElementById('risultato').innerText = `Il tu: ${sceltaUtente}. Cimputerz: ${sceltaComputer}. ${risultato}`;
+  }
+</script>
+
+</html>

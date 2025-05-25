@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../style.css">
+  <title>Borghi.js</title>
+</head>
+<body>
+    <header>
+        <h1>Numeretto casuale indovino!</h1>
+    </header>
+  <nav>
+        <a href="../index.html">Home</a>
+        <a href="indovina.html">Indovina il numero</a>
+        <a href="scf.html">Morra cinese</a>
+        <a href="quiz.html">Quiz</a>
+    </nav>
+    <div class="container">
+        <p>Scegli un numero da 1 a 64 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        <input type="number" id="indovina">
+        <p>&nbsp&nbsp&nbsp</p>
+        <button onclick="ctrl()">Prova</button>
+        <p id="msg"></p>
+    </div>
+    <div class="container">
+        <h1>Come è stato realizzato?</h1>
+        <ul>
+            <h2>1. Definire il concetto del gioco:</h2>
+            <li>Prima di iniziare a scrivere il codice, è importante capire come funzionerà il gioco. In questo caso, il gioco sarà basato su un computer che genera casualmente un numero compreso tra un valore minimo e massimo scelto dall'utente. L'utente dovrà tentare di indovinare questo numero attraverso inserimenti di numeri.</li>
+            <h2>2. Progettare l'interfaccia utente:</h2>
+            <li>Decidi come vuoi che l'utente interagisca con il gioco. In questo esempio, useremo una semplice pagina HTML con un campo di input per l'utente per inserire i loro tentativi e un pulsante per inviare il tentativo.</li>
+            <h2>3. Implementare la logica del gioco:</h2>
+            <li>Utilizzando JavaScript, dovrai implementare la logica del gioco. Questo includerà la generazione casuale del numero da indovinare e la gestione dei tentativi dell'utente.</li>
+            <h2>4. Fornire feedback all'utente:</h2>
+            <li>Assicurati che l'utente riceva feedback sul loro tentativo. Questo può includere messaggi che indicano se il loro tentativo è troppo alto, troppo basso o se hanno indovinato il numero correttamente.</li>
+            <h2>5. Gestire il flusso di gioco:</h2>
+            <li>Pianifica come gestire il flusso di gioco. Ad esempio, il gioco potrebbe terminare quando l'utente indovina il numero correttamente, o potresti voler limitare il numero di tentativi consentiti.</li>
+            <h2>6. Testare il gioco:</h2>
+            <li>Assicurati di testare il gioco per assicurarti che funzioni correttamente. Verifica che la generazione casuale del numero funzioni correttamente e che i messaggi di feedback siano accurati.</li>
+        
+        
+        
+        </ul>
+    </div>
+    <div class="container">
+        <div class="advertisement">
+            <h2>Pubblicità</h2>
+            <img src="../img/pubbl1.png" alt="Pubblicità">
+           
+        </div>
+    </div>
+  <script>
+    const ncaso = Math.floor(Math.random() * 63) + 1;
+    const indovina=document.getElementById('indovina');
+    const msg = document.getElementById('msg');
+
+    function ctrl() {
+      const nut = parseInt(indovina.value);
+      
+      if (nut === ncaso) {
+        msg.textContent = 'Hai indovinato campione!';
+      } else if (nut < ncaso) {
+        msg.textContent = 'Più alto!!';
+      } else if (nut > ncaso) {
+        msg.textContent = 'Più basso!!';
+      }
+    }
+  </script>
+</body>
+</html>
